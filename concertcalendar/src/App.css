@@ -1,0 +1,416 @@
+/* HOME */
+#home-header {
+  background-image: url('./concert-background.jpg');
+  background-size:     cover;                      
+    background-repeat:   no-repeat;
+    background-position: center center;
+    min-height: 100vh;
+    height: 100%;
+}
+header h1 {
+  margin: 0;
+  padding: 10px;
+  display: inline;
+}
+header a {
+  display: inline;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 20px;
+  color: black;
+}
+header a:hover {
+  text-decoration: underline;
+}
+
+header, main {
+  height: 100%;
+}
+footer {
+  font-size: 0.7em;
+  text-align: center;
+  height: 10vh;
+  background-image: linear-gradient(to left, #B9504D, #E1A56F);
+}
+footer p {
+  margin: 0;
+  padding-top: 20px;
+  color: white;
+}
+
+#welcome {
+  margin: 50px auto;
+  font-size: 3em;
+  text-align: center;
+}
+.go {
+  display: block;
+  margin: 20px auto;
+  width: 300px;
+  border: 1px solid black;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+  border-radius: 10px;
+}
+.go:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  font-weight: bolder;
+  border: 3px solid white;
+}
+#form {
+  text-align: center;
+}
+.home-form {
+  margin: 0 20px 50px;
+  height: 50px;
+  width: 300px;
+  border-radius: 10px;
+  text-align: center;
+}
+/* CALENDAR */
+
+/* FONT IMPORTS */
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
+@import url(https://fonts.googleapis.com/icon?family=Material+Icons);
+
+
+/* VARIABLES */
+
+.icon {
+  font-family: 'Material Icons', serif;
+  font-style: normal;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  font-weight: bold;
+  font-size: 1.5em;
+
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'liga';
+}
+.icon:hover {
+  cursor: pointer;
+}
+
+
+
+/* GENERAL */
+
+#cal-header {
+  background-image: url('./concert-background.jpg');
+  background-size:     cover;                      
+    background-repeat:   no-repeat;
+    background-position: center center;
+    min-height: 30vh;
+    height: 100%;
+}
+
+#calendar-body {
+    font-size: 1em;
+    font-weight: 300;
+    line-height: 1.5;
+    color: white;
+    background-image: linear-gradient(to right, #B9504D, #E1A56F);
+    position: relative;
+    display: block;
+    margin: 0 auto;
+    height: 100%;
+    min-height: 70vh;
+}
+#calendar-header {
+  text-align:center;
+}
+#calendar-header h2 {
+  margin: 0;
+  padding: 20px 0;
+}
+
+/* GRID */
+
+.row {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.row-middle {
+  align-items: center;
+}
+
+.col {
+  flex-grow: 1;
+  flex-basis: 0;
+  max-width: 100%;
+  padding: 20px 0;
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+}
+.cell {
+  text-align: center;
+  padding: 5px 5px 160px 0;
+  border: 1px solid white;
+}
+.cell:hover {
+  cursor: pointer;
+  -webkit-box-shadow: 3px 4px 70px 2px rgba(255,255,255,1);
+-moz-box-shadow: 3px 4px 70px 2px rgba(255,255,255,1);
+box-shadow: 3px 4px 70px 2px rgba(255,255,255,1);
+}
+.number {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.col-start {
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.col-center {
+  justify-content: center;
+  text-align: center;
+}
+
+.col-end {
+  justify-content: flex-end;
+  text-align: right;
+}
+
+/*Calendar section code modified from 'https://blog.flowandform.agency/create-a-custom-calendar-in-react-3df1bfd0b728' */
+
+/* EVENT LIST */
+#event-list {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+}
+#list-header {
+  background-image: url('./concert-background.jpg');
+  background-size:     cover;                      
+    background-repeat:   no-repeat;
+    background-position: center center;
+    min-height: 30vh;
+    height: 100%;
+}
+#list-main {
+  margin-top: 5%;
+  margin-bottom: 5%;
+  width: 100%;
+  height: 550px;
+  overflow: scroll;
+  position: relative;
+  
+  background-image: linear-gradient(to right, #B9504D, #E1A56F);
+  animation: slideIn 0.5s;
+}
+#list-grid {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  padding-top: 45px;
+}
+.event {
+  margin: 5% 5%;
+  color: white;
+  padding: 10px;
+}
+.event:hover {
+  cursor: pointer;
+  border: 1px solid white;
+  border-radius: 10px;
+}
+.event-selected {
+  margin: 5% 5%;
+  color: white;
+  padding: 10px;
+  border: 1px solid white;
+  border-radius: 10px;
+}
+.event-selected .add-event {
+  display: block;
+}
+.event:hover .add-event {
+  display: block;
+}
+.event h3 {
+  font-size: 2em;
+  margin: 0;
+  border-bottom: 1px solid white;
+}
+
+.add-event {
+  display: none;
+}
+#sorry {
+  text-align: center;
+  padding-top: 10%;
+  font-size: 2.5em;
+  color: white;
+}
+.event-data {
+  margin: 16px 0 0 25px;
+  padding: 0;
+  text-align: left;
+}
+.event-data li {
+  margin: 0;
+  padding: 2px 0;
+}
+#return {
+display: flex;
+justify-content: center;
+align-items: center;
+}
+#return button {
+  margin: 0;
+  color: white;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 50px;
+  height: 50px;
+  font-size: 1em;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0);
+  margin-bottom: 10px;
+  border: 1px solid white;
+  border-radius: 50%;
+}
+#return button:hover {
+  cursor: pointer;
+}
+/* ALL EVENTS */
+#saved-events {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: linear-gradient(to right, #B9504D, #E1A56F);
+  height: 100%;
+  min-height: 70vh;
+}
+#saved-events h1 {
+  margin: 0;
+  padding: 20px 0;
+  color: white;
+}
+#saved-events p {
+  margin: 0;
+  color: white;
+}
+.event-store {
+  width: 70%;
+  border: 2px solid white;
+  color: white;
+  text-align: center;
+}
+.event-store h2, p {
+  padding: 10px 0;
+}
+.event-store h2 {
+  margin: 0;
+}
+.event-store button {
+  margin-bottom: 10px;
+  font-size: 20px;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0);
+  border: 1px solid white;
+  color: white;
+  border-radius: 10px;
+}
+.event-store button:hover {
+  background-color: #E1A56F;
+  color: #B9504D;
+  font-weight: bolder;
+  border: 2px solid #B9504D;
+  cursor: pointer;
+}
+
+/* ANIMATIONS */
+@keyframes slideIn {
+  0% {
+    transform: translateX(100%)
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+@keyframes slideOut {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* MEDIA QUERIES */
+@media only screen and (max-width: 1000px) {
+  .app {
+    font-size: .8em;
+  }
+  #list-main {
+    animation: none;
+    top: 10%;
+  }
+  #list-grid {
+    grid-template-columns: auto auto;
+    padding-top: 50px;
+  }
+  .event-data {
+    font-size: 0.7em;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .app {
+    font-size: .6em;
+  }
+  #home-header h1 {
+    font-size: 1em;
+  }
+  #welcome {
+    font-size: 2em;
+  }
+  #list-main {
+    animation: none;
+    width: 80vh;
+    overflow: auto;
+  }
+  #list-grid {
+    grid-template-columns: auto;
+    padding-top: 55px;
+  }
+  #calendar-body {
+    width: 1000px;
+    overflow: auto;
+    height: 100%;
+  }
+  #cal-header {
+    width: 1000px;
+    overflow: auto;
+  }
+  #cal-footer {
+    width: 1000px;
+    overflow: auto;
+  }
+}
